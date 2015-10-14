@@ -61,7 +61,7 @@ Create a `Game` class with a minimum of 8 specs. The class should have the follo
 ### Primary Requirements
 Create a `Player` class with a minimum of 11 specs. The class should have the following class and instance methods:
 
-- `self.new(name)`: creates a new instance with the instance variable `name` assigned
+- `#initialize(name)`: Called when you use `Player.new`, sets up an instance with the instance variable `name` assigned
 - `#name`: returns the `@name` instance variable
 - `#plays`: returns an Array of the words played by the player
 - `#play(word)`: Adds the input word to the `plays` Array
