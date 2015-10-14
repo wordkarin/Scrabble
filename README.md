@@ -28,8 +28,8 @@ First, come up with a "plan of action" for how you want to work as a pair.
 Second, review the requirements and come up with a "plan of action" for how you want to approach this problem.
 
 Create a project structure which contains:
-- A `Game` class which contains some sort of data structure to store the **individual letter scores** listed below.
 - A Spec file which corresponds to your `Game` class. This spec should contain one "red" test as a starting point. (This test can be modified as your get further through the requirements)
+- A `Game` class which contains some sort of data structure to store the **individual letter scores** listed below.
 
 #### Score chart
 
