@@ -28,8 +28,8 @@ First, come up with a "plan of action" for how you want to work as a pair.
 Second, review the requirements and come up with a "plan of action" for how you want to approach this problem.
 
 Create a project structure which contains:
-- A `Scrabble` class which contains some sort of data structure to store the **individual letter scores** listed below.
-- A Spec file which corresponds to your `Scrabble` class. This spec should contain one "red" test as a starting point. (This test can be modified as your get further through the requirements)
+- A `Game` class which contains some sort of data structure to store the **individual letter scores** listed below.
+- A Spec file which corresponds to your `Game` class. This spec should contain one "red" test as a starting point. (This test can be modified as your get further through the requirements)
 
 #### Score chart
 
@@ -47,7 +47,7 @@ Create a project structure which contains:
 ## Wave 1
 
 ### Primary Requirements
-Create a `Scrabble` class with a minimum of 8 specs. The class should have the following **class methods**:
+Create a `Game` class with a minimum of 8 specs. The class should have the following **class methods**:
 - `self.score(word)`: returns the total score value for the given word. The word is input as a string (case insensitive). The chart below shows the point value for a given letter.
 - `self.highest_score_from(array_of_words)`: returns **the word in the array with the highest score**.
     - Note that it’s better to use fewer tiles, so if the top score is tied between multiple words, pick the one with the fewest letters.
