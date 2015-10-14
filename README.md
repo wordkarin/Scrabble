@@ -55,6 +55,7 @@ Create a `Scrabble` class with a minimum of 8 specs. The class should have the f
     - If the there are multiple words that are the same score and same length, pick the first one in supplied list.
 
 
+<!--
 ## Wave 2
 
 ### Primary Requirements
@@ -71,7 +72,6 @@ Create a `Player` class with a minimum of 11 specs. The class should have the fo
 - `#highest_word_score`: Returns the `highest_scoring_word` score.
 
 
-<!--
 ## Wave 3
 
 ### Primary Requirements
