@@ -54,7 +54,9 @@ module Scrabble
         word = "kitten"
         Scoring.score(weird_word).must_be_same_as(Scoring.score(word))
       end
-
+    end
+    
+    describe "highest_score_from" do
       it "should have a highest_score_from method that takes in an array of words" do
         # From the requirements: self.highest_score_from(array_of_words): returns the word in the array with the highest score.
         # This tests that the method exists and takes in the right number of arguments.
@@ -85,7 +87,7 @@ module Scrabble
 
       it "highest score method returns first word if there's a tie in score/length" do
         # From the requirements: If the there are multiple words that are the same score and same length, pick the first one in the supplied list.
-        # TOMCAT and KITTEN are both 6 letters long, and both have scores of 10. TOMCAT appears first, so that should be returned. 
+        # TOMCAT and KITTEN are both 6 letters long, and both have scores of 10. TOMCAT appears first, so that should be returned.
         same_length = %w(FOOT TOMCAT KITTEN)
         Scoring.highest_score_from(same_length).must_equal("TOMCAT")
       end
