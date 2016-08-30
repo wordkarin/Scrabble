@@ -32,17 +32,54 @@ module Scrabble
     def initialize
 
     end
+
+    def self.score(word)
+      #This method takes in a word and outputs a score based on the sum of its LETTER_SCORE.
+      #This method should not be case sensititve. The LETTER_SCORE keys are caps, so we should capitalize the word argument on input.
+      word.upcase!
+      #Then we split the word into an array of letters:
+      word_array = word.split(//)
+      word_score = 0
+      #Then we start looking up the scores, and adding them to a word_score variable.
+      word_array.each do |letter|
+        word_score += LETTER_SCORE[letter]
+      end
+
+      #If word is 7 letters long, add 50 point bonus.
+      if word_array.length == 7
+        word_score += 50
+      end
+
+      return word_score
+    end
+
+    def self.highest_score_from(array_of_words)
+
+      #start by iterating over the array of words to generate a score hash.
+      #the idea is that we'll have a hash where the key will be the score, and the value will be an array of words with that score.
+      scores = {}
+      array_of_words.each do |word|
+        if scores.has_key?(score(word))
+         scores[score(word)] << word
+        else
+         scores[score(word)] = [word]
+        end
+      end
+
+      #then, we'll be able to generate a scores array from the keys of the hash, find the max
+      max_score = scores.keys.max
+
+      #then, we'll be able to get the array of words associated with that max score.
+      highest_score_words = scores[max_score]
+
+      #if there's more than one word in that array, pick the shortest word.
+      if highest_score_words.length == 1
+        return highest_score_words[0]
+      else
+        #do something to get the shortest word.
+      end
+
+      #TODO: if there's a 7 letter word in the array associated with the max score, then pick that one.
+    end
   end
 end
-
-
-# Primary Requirements
-#
-# Create a Scrabble::Scoring class with a minimum of 8 specs. The class should have the following class methods:
-#
-# self.score(word): returns the total score value for the given word. The word is input as a string (case insensitive). The chart in the baseline requirements shows the point value for a given letter.
-# A seven letter word means that a player used all the tiles. Seven letter words receive a 50 point bonus.
-# self.highest_score_from(array_of_words): returns the word in the array with the highest score. In the case of tie, use these tiebreaking rules:
-# It’s better to use fewer tiles, in the case of a tie, prefer the work with the fewest letters.
-# There is a bonus for words that are seven letters. If the top score is tied between multiple words and one used all seven letters, choose the one with seven letters over the one with fewer tiles.
-# If the there are multiple words that are the same score and same length, pick the first one in the supplied list.
