@@ -35,6 +35,9 @@ module Scrabble
 
     def self.score(word)
       #This method takes in a word and outputs a score based on the sum of its LETTER_SCORE.
+      #If the thing that is passed in is not a string, should raise an argument.
+      raise ArgumentError.new("Invalid input type") if word.class != String
+
       #This method should not be case sensititve. The LETTER_SCORE keys are caps, so we should capitalize the word argument on input.
       word.upcase!
       #Then we split the word into an array of letters:
@@ -60,13 +63,13 @@ module Scrabble
       scores = {}
       array_of_words.each do |word|
         if scores.has_key?(score(word))
-         scores[score(word)] << word
+          scores[score(word)] << word
         else
-         scores[score(word)] = [word]
+          scores[score(word)] = [word]
         end
       end
 
-      #then, we'll be able to generate a scores array from the keys of the hash, find the max
+      #then, we'll be able to generate a scores array from the keys of the hash, and find the max score.
       max_score = scores.keys.max
 
       #then, we'll be able to get the array of words associated with that max score.
@@ -77,9 +80,22 @@ module Scrabble
         return highest_score_words[0]
       else
         #do something to get the shortest word.
+        shortest_word = highest_score_words[0] #start with the first word in the array
+
+        highest_score_words.each do |word|
+          #if there's a 7 letter word in the array associated with the max score, then pick that one. if there are multiple 7 letter words with the same score, return the first one.
+          if word.length == 7
+            return word #exits the loop and returns the word
+          elsif word.length < shortest_word.length
+            shortest_word = word
+          # elsif word.length == shortest_word.length
+            #keep shortest_word and keep going.
+          end
+        end
+
+        return shortest_word
       end
 
-      #TODO: if there's a 7 letter word in the array associated with the max score, then pick that one.
     end
   end
 end

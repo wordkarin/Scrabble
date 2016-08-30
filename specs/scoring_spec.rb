@@ -25,17 +25,18 @@ module Scrabble
     end
 
     describe "score" do
-      it "should raise an error when a non-letter is passed in" do
-
+      it "should raise an error when a non-word is passed in" do
+        #I want to check that if we pass something that isn't a string in, that it doesn't try to score it.
+        #TODO: We could also add tests to make sure that the thing that is passed into the score method are single words (no spaces).
+        proc {Scoring.score(1)}.must_raise(ArgumentError)
       end
-      
+
       it "should have a score method that takes in a word" do
         # From the requirements: self.score(word): returns the total score value for the given word. The word is input as a string (case insensitive). The chart in the baseline requirements shows the point value for a given letter.
         Scoring.score("cat")
       end
 
       it "score method should return the correct score" do
-        skip
         # This test will input a specific word with a known score, assert equal that the score the method returns is the same.
         word = "cat"
         Scoring.score(word).must_equal(5)
@@ -57,30 +58,36 @@ module Scrabble
       it "should have a highest_score_from method that takes in an array of words" do
         # From the requirements: self.highest_score_from(array_of_words): returns the word in the array with the highest score.
         # This tests that the method exists and takes in the right number of arguments.
-        array_of_words = %w(cat hat grape)
+        array_of_words = %w(CAT HAT GRAPE)
         Scoring.highest_score_from(array_of_words)
       end
 
       it "should have a highest_score_from method that takes in an array of words" do
         # From the requirements: self.highest_score_from(array_of_words): returns the word in the array with the highest score.
         # This tests that the correct word is returned.
-        array_of_words = %w(cat hat grape)
-        Scoring.highest_score_from(array_of_words).must_equal("grape")
+        array_of_words = %w(CAT HAT GRAPE)
+        Scoring.highest_score_from(array_of_words).must_equal("GRAPE")
       end
 
       it "highest_score_from should return the smaller of two words with the same score" do
         # From the requirements: It’s better to use fewer tiles, in the case of a tie, prefer the work with the fewest letters.
-        # We can make a word array with just two words in it that have the same score, and pass it into the highest_score_from method.
+        # HATTER and MEOW are both 9 point words, but have different lengths.
+        same_score = %w(HATTER MEOW CAT)
+        Scoring.highest_score_from(same_score).must_equal("MEOW")
       end
 
       it "highest_score_from returns seven letter word even if there's shorter higher score word" do
-        skip
         # From the requirements: There is a bonus for words that are seven letters. If the top score is tied between multiple words and one used all seven letters, choose the one with seven letters over the one with fewer tiles.
+        #NOTE: the shorter word here is not real, but has the same score as the seven letter word (which includes the 50 point bonus).
+        seven_vs = %w(QZQZZX aerated)
+        Scoring.highest_score_from(seven_vs).must_equal("AERATED")
       end
 
       it "highest score method returns first word if there's a tie in score/length" do
-        skip
         # From the requirements: If the there are multiple words that are the same score and same length, pick the first one in the supplied list.
+        # TOMCAT and KITTEN are both 6 letters long, and both have scores of 10. TOMCAT appears first, so that should be returned. 
+        same_length = %w(FOOT TOMCAT KITTEN)
+        Scoring.highest_score_from(same_length).must_equal("TOMCAT")
       end
     end
   end
