@@ -4,17 +4,18 @@ require_relative '../player.rb' #include the code from player.rb that we need to
 
 module Scrabble
   describe Player do
+    let(:sebastian) {Player.new("Sebastian")} #This allows us to just use 'sebastian' as a new player throughout the tests.
     describe "#initialize" do
       it "should require a name paramter" do
         # Create a Scrabble::Player class with a minimum of 11 specs. The only required paramter for instances of the class is the player's name. Instances of the class should repond to the following messages:
-        Player.new("Sebastian").must_be_instance_of(Player)
+        sebastian.must_be_instance_of(Player)
       end
 
       it "should return the value of the name instance variable" do
         # #name: returns the value of the @name instance variable
         #Strategy: Add an attribute reader so that the name that is passed into the initialize method sets the @name instance variable. This test calls .name on the new instance and returns the name.
-        sebastian_the_cat = Player.new("Sebastian")
-        sebastian_the_cat.name.must_equal("Sebastian")
+
+        sebastian.name.must_equal("Sebastian")
       end
     end
 
@@ -22,16 +23,21 @@ module Scrabble
       it "should return an array of the words played by the player" do
         # #plays: returns an Array of the words played by the player
         #Strategy: There is another instance variable (plays), that is initialized as an empty array, and gets  pushed to by the play(word) method.
-        sebastian_the_cat = Player.new("Sebastian")
-        sebastian_the_cat.plays.must_be_kind_of(Array)
+        sebastian.plays.must_be_kind_of(Array)
       end
     end
 
     describe "#play(word)" do
       it "should add the word to the @plays array" do
-        skip
         # #play(word): Adds the input word to the plays Array
-        #Strategy: This method takes in a word, and adds it to plays array. This method should also update the total score, by calling the "score" method in Scoring for the word played, taking the score that is returned, and adding to the total_score.
+        #Strategy: This method takes in a word, and adds it to plays array. This method should also update the total score, by calling the "score" method in Scoring for the word played, taking the score that is returned, and adding to the total_score. This first test just tests that the word is added to the plays array.
+        sebastian.play("meow")
+        sebastian.plays.must_include("meow")
+      end
+
+      it "should raise an error if the word argument is not a string" do
+        #Some error checking if the thing passed in is not a string.
+        proc {sebastian.play(1)}.must_raise(ArgumentError)
       end
 
       it "should return false if the player has already won" do
