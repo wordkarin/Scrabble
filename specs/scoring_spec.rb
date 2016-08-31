@@ -1,6 +1,8 @@
 require_relative 'spec_helper' #get all the stuff we need for testing.
 require_relative '../scoring.rb' #include all the code in scoring.rb that we need to test.
 
+##NE: 68: changed 'grape' => 'GRAPE' re: upcase! in self(score)
+
 module Scrabble
   #Since all the tests in this spec correspond to Scoring, which lives inside Scrabble, can wrap the tests in the module also.
   describe Scoring do
@@ -28,7 +30,7 @@ module Scrabble
       it "should raise an error when a non-letter is passed in" do
 
       end
-      
+
       it "should have a score method that takes in a word" do
         # From the requirements: self.score(word): returns the total score value for the given word. The word is input as a string (case insensitive). The chart in the baseline requirements shows the point value for a given letter.
         Scoring.score("cat")
@@ -65,7 +67,7 @@ module Scrabble
         # From the requirements: self.highest_score_from(array_of_words): returns the word in the array with the highest score.
         # This tests that the correct word is returned.
         array_of_words = %w(cat hat grape)
-        Scoring.highest_score_from(array_of_words).must_equal("grape")
+        Scoring.highest_score_from(array_of_words).must_equal("GRAPE")
       end
 
       it "highest_score_from should return the smaller of two words with the same score" do
