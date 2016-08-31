@@ -35,15 +35,18 @@ module Scrabble
         sebastian.plays.must_include("meow")
       end
 
+      #TODO: we should make this test more robust, maybe with an array of bad entries.
+      #TODO: we should also possibly update the method to raise an error if a string with multiple words is passed in, since we just want a single word. (this can be a v2 change, don't need to do right away.)
       it "should raise an error if the word argument is not a string" do
         #Some error checking if the thing passed in is not a string.
         proc {sebastian.play(1)}.must_raise(ArgumentError)
       end
 
       it "should return false if the player has already won" do
-        skip
         # Returns false if player has already won
         #Strategy: This method will call the won? method, and should NOT update total_score if the player has already won.
+        sebastian.total_score = 101
+        sebastian.play("purr").must_equal(false)
       end
 
       it "should return the score of the word played" do
