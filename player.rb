@@ -1,3 +1,5 @@
+require_relative 'scoring.rb' #include all the code in scoring.rb that we need to access here.
+
 module Scrabble
   class Player
     attr_reader :name, :plays, :total_score
@@ -10,16 +12,22 @@ module Scrabble
 
     def play(word)
       #play(word): Adds the input word to the plays Array
-      #Strategy: This method takes in a word, and adds it to plays array. This method should also update the total score, by calling the "score" method in Scoring for the word played, taking the score that is returned, and adding to the total_score. This first test just tests that the word is added to the plays array.
+      #Strategy: This method takes in a word, and adds it to plays array. This method should also update the total score, by calling the "score" method in Scoring for the word played, taking the score that is returned, and adding to the total_score.
+
+      #this checks if the argument passed in is a string.
       if word.class != String
         raise ArgumentError.new("To play a word, it must be a string.")
       end
 
+      #this checks if the user has already won and therefore cannot play another word.
       if won?
         return false
       end
-
+      #adds the word to the plays array.
       @plays << word
+
+      #returns the score of the word.
+      return Scoring.score(word)
     end
 
     def won?

@@ -1,5 +1,4 @@
 require_relative 'spec_helper' #get all the stuff we need for testing.
-require_relative '../scoring.rb' #include all the code in scoring.rb that we need to test.
 require_relative '../player.rb' #include the code from player.rb that we need to test.
 
 module Scrabble
@@ -28,7 +27,7 @@ module Scrabble
     end
 
     describe "#play(word)" do
-      it "should add the word to the @plays array" do
+      it "should add the word to the plays array" do
         # #play(word): Adds the input word to the plays Array
         #Strategy: This method takes in a word, and adds it to plays array. This method should also update the total score, by calling the "score" method in Scoring for the word played, taking the score that is returned, and adding to the total_score. This first test just tests that the word is added to the plays array.
         sebastian.play("meow")
@@ -50,9 +49,10 @@ module Scrabble
       end
 
       it "should return the score of the word played" do
-        skip
         # Returns the score of the word
         #Strategy: The "return" statement for the play(word) method should be the score of the word they just played.
+        sebastian.play("purr").must_equal(6)
+
       end
     end
 

@@ -46,8 +46,8 @@ module Scrabble
       raise ArgumentError.new("Invalid input type") if word.class != String
 
       #This method should not be case sensititve. The LETTER_SCORE keys are caps, so we should capitalize the word argument on input.
-      word.upcase!
-      word_sp = strip_punctuation(word)
+      word_cap = word.upcase
+      word_sp = strip_punctuation(word_cap)
       #Then we split the word into an array of letters:
       word_array = word_sp.split(//)
       word_score = 0
