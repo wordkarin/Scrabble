@@ -11,17 +11,19 @@ module Scrabble
       end
     end
 
-    describe "#class" do
+    describe "class" do
       it "should have a LETTER_SCORE length of 26" do
         #this just tests that the LETTER_SCORE data store has the correct length.
         Scoring::LETTER_SCORE.length.must_equal(26)
       end
 
-      it "should have the correct LETTER_SCORE for a letter" do
+      letters = ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"]
+      letters.each do |letter|
+        it "should have the correct LETTER_SCORE for a letter" do
         #Spot-check the constant LETTER_SCORE for correct letter score.
-        Scoring::LETTER_SCORE["A"].must_equal 1
+        Scoring::LETTER_SCORE[letter].must_equal 1
+        end
       end
-
     end
 
     describe "score" do
@@ -55,7 +57,7 @@ module Scrabble
         Scoring.score(weird_word).must_be_same_as(Scoring.score(word))
       end
     end
-    
+
     describe "highest_score_from" do
       it "should have a highest_score_from method that takes in an array of words" do
         # From the requirements: self.highest_score_from(array_of_words): returns the word in the array with the highest score.
