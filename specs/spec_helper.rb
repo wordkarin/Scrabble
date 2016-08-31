@@ -1,4 +1,8 @@
-# KNK: I've just copied the spec_helper.rb file from the in-class TDD demo. 
+# KNK: This is from the simplecov documentation
+require 'simplecov'
+SimpleCov.start
+
+# KNK: I've just copied the spec_helper.rb file from the in-class TDD demo.
 require 'minitest'
 require 'minitest/spec'
 require "minitest/autorun"
