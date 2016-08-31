@@ -33,6 +33,13 @@ module Scrabble
 
     end
 
+
+    def self.strip_punctuation(string)
+      string.gsub(/^a-z | ^A-Z/,)
+      string.strip
+      return string
+    end
+
     def self.score(word)
       #This method takes in a word and outputs a score based on the sum of its LETTER_SCORE.
       #If the thing that is passed in is not a string, should raise an argument.
@@ -40,8 +47,9 @@ module Scrabble
 
       #This method should not be case sensititve. The LETTER_SCORE keys are caps, so we should capitalize the word argument on input.
       word.upcase!
+      word_sp = strip_punctuation(word)
       #Then we split the word into an array of letters:
-      word_array = word.split(//)
+      word_array = word_sp.split(//)
       word_score = 0
       #Then we start looking up the scores, and adding them to a word_score variable.
       word_array.each do |letter|
