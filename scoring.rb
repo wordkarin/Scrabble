@@ -35,9 +35,9 @@ module Scrabble
 
 
     def self.strip_punctuation(string)
-      string.gsub(/^a-z | ^A-Z/,)
-      string.strip
-      return string
+      string_sp = string.gsub(/[^a-z\s]/i,'')
+      string_sp.strip
+      return string_sp
     end
 
     def self.score(word)
