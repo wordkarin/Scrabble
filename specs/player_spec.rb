@@ -11,17 +11,19 @@ module Scrabble
       end
 
       it "should return the value of the name instance variable" do
-        skip
         # #name: returns the value of the @name instance variable
         #Strategy: Add an attribute reader so that the name that is passed into the initialize method sets the @name instance variable. This test calls .name on the new instance and returns the name.
+        sebastian_the_cat = Player.new("Sebastian")
+        sebastian_the_cat.name.must_equal("Sebastian")
       end
     end
 
     describe "#plays" do
       it "should return an array of the words played by the player" do
-        skip
-      # #plays: returns an Array of the words played by the player
-      #Strategy: There is another instance variable (plays), that is initialized as an empty array, and gets pushed to by the play(word) method.
+        # #plays: returns an Array of the words played by the player
+        #Strategy: There is another instance variable (plays), that is initialized as an empty array, and gets  pushed to by the play(word) method.
+        sebastian_the_cat = Player.new("Sebastian")
+        sebastian_the_cat.plays.must_be_kind_of(Array)
       end
     end
 
@@ -73,7 +75,7 @@ module Scrabble
       it "should return the score of the highest scoring word" do
         skip
         # #highest_word_score: Returns the highest_scoring_word score
-        #Strategy: This method should directly call the score method from the Scoring class, by passing in the result of the highest_scoring_word from the Player class.  
+        #Strategy: This method should directly call the score method from the Scoring class, by passing in the result of the highest_scoring_word from the Player class.
       end
     end
   end
