@@ -27,10 +27,13 @@ module Scrabble
     end
 
     describe "score" do
-      it "should raise an error when a non-word is passed in" do
+      it "should raise an error when a non-string is passed in" do
         #I want to check that if we pass something that isn't a string in, that it doesn't try to score it.
         #TODO: We could also add tests to make sure that the thing that is passed into the score method are single words (no spaces).
         proc {Scoring.score(1)}.must_raise(ArgumentError)
+      end
+      it "should strip punctuation when a non-alpha character is input" do
+        Scoring.score("ETHOS!").must_equal(Scoring.score("ETHOS"))
       end
 
       it "should have a score method that takes in a word" do
@@ -40,7 +43,7 @@ module Scrabble
 
       it "score method should return the correct score" do
         # This test will input a specific word with a known score, assert equal that the score the method returns is the same.
-        word = "cat"
+        word = "CAT"
         Scoring.score(word).must_equal(5)
       end
 
