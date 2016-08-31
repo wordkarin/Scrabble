@@ -26,8 +26,13 @@ module Scrabble
       #adds the word to the plays array.
       @plays << word
 
+      #gets the score for the word
+      word_score = Scoring.score(word)
+      #updates the total score.
+      @total_score += word_score
+
       #returns the score of the word.
-      return Scoring.score(word)
+      return word_score
     end
 
     def won?

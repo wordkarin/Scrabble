@@ -58,17 +58,24 @@ module Scrabble
 
     describe "#total_score" do
       it "should return the sum of the scores of played words" do
-        skip
         # #total_score: Returns the sum of scores of played words
         # Strategy: total_score is an instance variable that is intialized as 0 in the constructor.
+        sebastian.play("purr") #worth 6 points
+        sebastian.play("meow") #worth 9 points
+        sebastian.total_score.must_equal(15)
       end
     end
 
     describe "#won?" do
       it "should return true if player has over 100 points" do
-        skip
       # #won?: If the player has over 100 points, returns true, otherwise returns false
       #Strategy: This method is going to be called in the play(word) method, because we need to know whether the player has won, so that they stop playing word.
+        11.times do
+          sebastian.play("feline") #worth 9 points, total_score should be 99
+        end
+
+        sebastian.play("meow") #worth 9 points, total_score should now be worth 108
+        sebastian.won?.must_equal(true)
       end
     end
 
