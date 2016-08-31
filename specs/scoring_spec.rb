@@ -56,6 +56,11 @@ module Scrabble
         word = "kitten"
         Scoring.score(weird_word).must_be_same_as(Scoring.score(word))
       end
+
+      it "score method should call strip_punctuation and strip it" do
+        #The score method calls strip_punctuation and returns the word without any punctuation, so that if any punctuation is entered into the word, it scores it without the extra characters. 
+        Scoring.score("this!").must_be_same_as(Scoring.score("this"))
+      end
     end
 
     describe "highest_score_from" do
