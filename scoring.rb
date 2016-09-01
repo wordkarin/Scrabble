@@ -29,10 +29,9 @@ module Scrabble
       "Q" => 10,
       "Z" => 10,
     }
+
     def initialize
-
     end
-
 
     def self.strip_punctuation(string)
       string_sp = string.gsub(/[^a-z\s]/i,'')
@@ -40,14 +39,14 @@ module Scrabble
       return string_sp
     end
 
+
     def self.score(word)
       #This method takes in a word and outputs a score based on the sum of its LETTER_SCORE.
       #If the thing that is passed in is not a string, should raise an argument.
-      raise ArgumentError.new("Invalid input type") if word.class != String
-
+      check_valid_entry(word)
       #This method should not be case sensititve. The LETTER_SCORE keys are caps, so we should capitalize the word argument on input.
-      word_cap = word.upcase
-      word_sp = strip_punctuation(word_cap)
+      #word_cap = word.upcase <= included this in 'check_valid_entry'
+      strip_punctuation(word)
       #Then we split the word into an array of letters:
       word_array = word_sp.split(//)
       word_score = 0
@@ -55,12 +54,10 @@ module Scrabble
       word_array.each do |letter|
         word_score += LETTER_SCORE[letter]
       end
-
       #If word is 7 letters long, add 50 point bonus.
       if word_array.length == 7
         word_score += 50
       end
-
       return word_score
     end
 
@@ -76,34 +73,28 @@ module Scrabble
           scores[score(word)] = [word]
         end
       end
-
-      #then, we'll be able to generate a scores array from the keys of the hash, and find the max score.
-      max_score = scores.keys.max
-
-      #then, we'll be able to get the array of words associated with that max score.
-      highest_score_words = scores[max_score]
-
-      #if there's more than one word in that array, pick the shortest word.
-      if highest_score_words.length == 1
-        return highest_score_words.first
-      else
-        #do something to get the shortest word.
-        shortest_word = highest_score_words[0] #start with the first word in the array
-
-        highest_score_words.each do |word|
-          #if there's a 7 letter word in the array associated with the max score, then pick that one. if there are multiple 7 letter words with the same score, return the first one.
-          if word.length == 7
-            return word #exits the loop and returns the word
-          elsif word.length < shortest_word.length
-            shortest_word = word
+    end
+    #then, we'll be able to generate a scores array from the keys of the hash, and find the max score.
+    max_score = scores.keys.max
+    #then, we'll be able to get the array of words associated with that max score.
+    highest_score_words = scores[max_score]
+    #if there's more than one word in that array, pick the shortest word.
+    if highest_score_words.length == 1
+      return highest_score_words.first
+    else
+      #do something to get the shortest word. ##NE so, this is a comparison of the words during iteration?
+      shortest_word = highest_score_words.first #start with the first word in the array
+      highest_score_words.each do |word|
+        #if there's a 7 letter word in the array associated with the max score, then pick that one. if there are multiple 7 letter words with the same score, return the first one.
+        if word.length == 7
+          return word #exits the loop and returns the word
+        elsif word.length < shortest_word.length
+          shortest_word = word
           # elsif word.length == shortest_word.length
-            #keep shortest_word and keep going.
-          end
+          #keep shortest_word and keep going.
         end
-
         return shortest_word
       end
-
     end
   end
 end
