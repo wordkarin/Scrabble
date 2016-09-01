@@ -10,15 +10,15 @@ module Scrabble
       @total_score = 0
     end
 
-    def check_valid_entry(word)
-      if word != String || if word.include?(' ')
-        raise ArgumentError.new("Invalid Entry")
-        exit
-      end
-        else
-          return word.upcase
-      end
-    end
+    # def check_valid_entry(word)
+    #   if word != String || if word.include?(' ')
+    #     raise ArgumentError.new("Invalid Entry")
+    #     exit
+    #   end
+    #     else
+    #       return word.upcase
+    #   end
+    # end
 
     def won?
       #won?: If the player has over 100 points, returns true, otherwise returns false
@@ -33,7 +33,7 @@ module Scrabble
       #play(word): Adds the input word to the plays Array
       #This method should also update the total score, by calling the "score" method in Scoring for the word played, taking the score that is returned, and adding to the total_score.
       #this checks if the argument passed in is a string and, if so, returns upcase string.
-      check_valid_entry(word)
+      Scoring.check_valid_entry(word)
       #this checks if the user has already won and therefore cannot play another word.
       if won?
         return false

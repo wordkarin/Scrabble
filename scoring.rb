@@ -39,14 +39,23 @@ module Scrabble
       return string_sp
     end
 
+    def self.check_valid_entry(word)
+      if word.class != String || word.include?(' ')
+        raise ArgumentError.new("Invalid Entry")
+        # exit
+        # end
+      else
+        return word
+      end
+    end
 
     def self.score(word)
       #This method takes in a word and outputs a score based on the sum of its LETTER_SCORE.
       #If the thing that is passed in is not a string, should raise an argument.
       check_valid_entry(word)
       #This method should not be case sensititve. The LETTER_SCORE keys are caps, so we should capitalize the word argument on input.
-      #word_cap = word.upcase <= included this in 'check_valid_entry'
-      strip_punctuation(word)
+      word_cap = word.upcase #included this in 'check_valid_entry'
+      word_sp = strip_punctuation(word_cap)
       #Then we split the word into an array of letters:
       word_array = word_sp.split(//)
       word_score = 0
@@ -98,4 +107,4 @@ module Scrabble
       end
     end
   end
-end 
+end
