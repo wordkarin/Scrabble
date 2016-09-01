@@ -73,28 +73,29 @@ module Scrabble
           scores[score(word)] = [word]
         end
       end
-    end
-    #then, we'll be able to generate a scores array from the keys of the hash, and find the max score.
-    max_score = scores.keys.max
-    #then, we'll be able to get the array of words associated with that max score.
-    highest_score_words = scores[max_score]
-    #if there's more than one word in that array, pick the shortest word.
-    if highest_score_words.length == 1
-      return highest_score_words.first
-    else
-      #do something to get the shortest word. ##NE so, this is a comparison of the words during iteration?
-      shortest_word = highest_score_words.first #start with the first word in the array
-      highest_score_words.each do |word|
-        #if there's a 7 letter word in the array associated with the max score, then pick that one. if there are multiple 7 letter words with the same score, return the first one.
-        if word.length == 7
-          return word #exits the loop and returns the word
-        elsif word.length < shortest_word.length
-          shortest_word = word
-          # elsif word.length == shortest_word.length
-          #keep shortest_word and keep going.
+
+      #then, we'll be able to generate a scores array from the keys of the hash, and find the max score.
+      max_score = scores.keys.max
+      #then, we'll be able to get the array of words associated with that max score.
+      highest_score_words = scores[max_score]
+      #if there's more than one word in that array, pick the shortest word.
+      if highest_score_words.length == 1
+        return highest_score_words.first
+      else
+        #do something to get the shortest word. ##NE so, this is a comparison of the words during iteration?
+        shortest_word = highest_score_words.first #start with the first word in the array
+        highest_score_words.each do |word|
+          #if there's a 7 letter word in the array associated with the max score, then pick that one. if there are multiple 7 letter words with the same score, return the first one.
+          if word.length == 7
+            return word #exits the loop and returns the word
+          elsif word.length < shortest_word.length
+            shortest_word = word
+            # elsif word.length == shortest_word.length
+            #keep shortest_word and keep going.
+          end
+          return shortest_word
         end
-        return shortest_word
       end
     end
   end
-end
+end 

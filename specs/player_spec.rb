@@ -34,13 +34,13 @@ module Scrabble
       end
 
 
-      word = [cricket, 50, "pandering monkey", myopic, modish, 444, 16, "fanciful flamingo"]
-      word = [CRICKET, 50, "PANDERING MONKEY", MYOPIC, MODISH, 444, 16, "FANCIFUL FLAMINGO"]
-      word.each do |words|
+      # this array  should only contain invalid strings and non-strings.
+      words = [50, "PANDERING MONKEY", 444, 16, "FANCIFUL FLAMINGO", 5.4]
+      words.each do |word|
         it "should raise an error if argument passed in is not valid a string" do
           #checks if the argument passed in is a single word string
           #proc {sebastian.play(word)}.must_raise(ArgumentError)
-          return Scrabble::Player.play[words]
+          proc {sebastian.play(word)}.must_raise(ArgumentError)
         end
       end
     end
