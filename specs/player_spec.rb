@@ -34,69 +34,68 @@ module Scrabble
       end
 
 
-      word = [cricket, 50, "pandering monkey", myopic, modish, 444, 16, "fanciful flamingo"]
-      word = [CRICKET, 50, "PANDERING MONKEY", MYOPIC, MODISH, 444, 16, "FANCIFUL FLAMINGO"]
-      word.each do |words|
+      # this array should only contain invalid strings and non-strings.
+      words = [50, "PANDERING MONKEY", 444, 16, "FANCIFUL FLAMINGO", 5.4]
+      words.each do |word|
         it "should raise an error if argument passed in is not valid a string" do
           #checks if the argument passed in is a single word string
           #proc {sebastian.play(word)}.must_raise(ArgumentError)
-          return Scrabble::Player.play[words]
+          proc {sebastian.play(word)}.must_raise(ArgumentError)
         end
       end
-    end
 
-
-    it "should return false if the player has already won" do
-      # Returns false if player has already won
-      #Strategy: This method will call the won? method, and should NOT update total_score if the player has already won.
-      sebastian.total_score = 101
-      sebastian.play("purr").must_equal(false)
-    end
-
-    it "should return the score of the word played" do
-      # Returns the score of the word
-      #Strategy: The "return" statement for the play(word) method should be the score of the word they just played.
-      sebastian.play("purr").must_equal(6)
-
-    end
-  end
-
-  describe "#total_score" do
-    it "should return the sum of the scores of played words" do
-      # #total_score: Returns the sum of scores of played words
-      # Strategy: total_score is an instance variable that is intialized as 0 in the constructor.
-      sebastian.play("purr") #worth 6 points
-      sebastian.play("meow") #worth 9 points
-      sebastian.total_score.must_equal(15)
-    end
-  end
-
-  describe "#won?" do
-    it "should return true if player has over 100 points" do
-      # #won?: If the player has over 100 points, returns true, otherwise returns false
-      #Strategy: This method is going to be called in the play(word) method, because we need to know whether the player has won, so that they stop playing word.
-      11.times do
-        sebastian.play("feline") #worth 9 points, total_score should be 99
+      it "should return false if the player has already won" do
+        # Returns false if player has already won
+        #Strategy: This method will call the won? method, and should NOT update total_score if the player has   already won.
+        sebastian.total_score = 101
+        sebastian.play("purr").must_equal(false)
       end
 
-      sebastian.play("meow") #worth 9 points, total_score should now be worth 108
-      sebastian.won?.must_equal(true)
-    end
-  end
+      it "should return the score of the word played" do
+        # Returns the score of the word
+        #Strategy: The "return" statement for the play(word) method should be the score of the word they just   played.
+        sebastian.play("purr").must_equal(6)
 
-  describe "#highest_scoring_word" do
-    it "should return the highest scoring word the player has played" do
-      skip
-      # #highest_scoring_word: Returns the highest scoring played word
-      #Strategy: This method should directly call highest_score_from the Scoring class, by passing in the @plays array.
+      end
     end
-  end
 
-  describe "#highest_word_score" do
-    it "should return the score of the highest scoring word" do
-      skip
-      # #highest_word_score: Returns the highest_scoring_word score
-      #Strategy: This method should directly call the score method from the Scoring class, by passing in the result of the highest_scoring_word from the Player class.
+    describe "#total_score" do
+      it "should return the sum of the scores of played words" do
+        # #total_score: Returns the sum of scores of played words
+        # Strategy: total_score is an instance variable that is intialized as 0 in the constructor.
+        sebastian.play("purr") #worth 6 points
+        sebastian.play("meow") #worth 9 points
+        sebastian.total_score.must_equal(15)
+      end
+    end
+
+    describe "#won?" do
+      it "should return true if player has over 100 points" do
+        # #won?: If the player has over 100 points, returns true, otherwise returns false
+        #Strategy: This method is going to be called in the play(word) method, because we need to know whether the  player has won, so that they stop playing word.
+        11.times do
+          sebastian.play("feline") #worth 9 points, total_score should be 99
+        end
+
+        sebastian.play("meow") #worth 9 points, total_score should now be worth 108
+        sebastian.won?.must_equal(true)
+      end
+    end
+
+    describe "#highest_scoring_word" do
+      it "should return the highest scoring word the player has played" do
+        skip
+        # #highest_scoring_word: Returns the highest scoring played word
+        #Strategy: This method should directly call highest_score_from the Scoring class, by passing in the @plays  array.
+      end
+    end
+
+    describe "#highest_word_score" do
+      it "should return the score of the highest scoring word" do
+        skip
+        # #highest_word_score: Returns the highest_scoring_word score
+        #Strategy: This method should directly call the score method from the Scoring class, by passing in the  result of the highest_scoring_word from the Player class.
+      end
     end
   end
 end
