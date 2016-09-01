@@ -8,18 +8,27 @@ require_relative '../tile_bag'
 #
 module Scrabble
   describe TileBag do
-    let(:tile){TileBag.new}
+    let(:tiles){TileBag.new}
     describe "#initialize" do
       it "should be an instance of TileBag" do
         # strategy: each instance of TileBag sets up new collection of tiles in a hash, where the key is the letter, and the value is the number of tiles of that letter.
         # each of the methods on TileBag is an instance method (called on the new instance of TileBag.
-        tile.must_be_instance_of(TileBag)
+        tiles.must_be_instance_of(TileBag)
       end
 
       it "should respond to .collection with a Hash of tiles" do
-        skip
         # using attribute reader, @collection = collection, returns hash
-        # tile.collection.must_be_kind_of(Hash)
+        tiles.collection.must_be_kind_of(Hash)
+      end
+
+      it "should have a key of 'A'" do
+        #TODO: should have another test in here that checks that the hash is populated with letters and has values of the number of tiles of that letter.
+        tiles.collection.keys.must_include("A")
+      end
+
+      it "should start with 98 tiles" do
+        #upon initialization, there should be a full set of 98 tiles.
+        tiles.collection.values.reduce(:+).must_equal(98)
       end
     end
 
@@ -40,8 +49,10 @@ module Scrabble
 
     describe "#tiles_remaining" do
       it "should return the number of tiles left in the bag" do
-        skip
         #returns the number of tiles left in the bag, not an array.
+        skip
+        tiles.draw_tiles(5) #start with 98 tiles, remove 5 with draw_tiles method.
+        tiles.tiles_remaining.must_equal(93) #should now have 93 left.
       end
     end
   end
