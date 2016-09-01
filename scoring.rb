@@ -87,23 +87,22 @@ module Scrabble
       max_score = scores.keys.max
       #then, we'll be able to get the array of words associated with that max score.
       highest_score_words = scores[max_score]
-      #if there's more than one word in that array, pick the shortest word.
+      #if there's only one word in the array, return that word.
       if highest_score_words.length == 1
         return highest_score_words.first
       else
-        #do something to get the shortest word. ##NE so, this is a comparison of the words during iteration?
+        # if there are more than than one word in that array, pick the shortest word.
         shortest_word = highest_score_words.first #start with the first word in the array
         highest_score_words.each do |word|
           #if there's a 7 letter word in the array associated with the max score, then pick that one. if there are multiple 7 letter words with the same score, return the first one.
           if word.length == 7
             return word #exits the loop and returns the word
-          elsif word.length < shortest_word.length
+          elsif word.length < shortest_word.length #compares length of word with first word
             shortest_word = word
-            # elsif word.length == shortest_word.length
-            #keep shortest_word and keep going.
+            #if they're equal, don't do anything. 
           end
-          return shortest_word
         end
+          return shortest_word
       end
     end
   end
