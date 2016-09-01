@@ -1,9 +1,6 @@
 require_relative 'scoring.rb'
 module Scrabble
   class TileBag
-  attr_reader :collection
-
-  def initialize
     # ##### Initial Distribution of Letters
     # | Letter : Qty. |
     # |:------:|:-----:|
@@ -20,7 +17,7 @@ module Scrabble
     # | K : 1  | X : 1 |
     # | L : 4  | Y : 2 |
     # | M : 2  | Z : 1 |
-    @collection = {
+    ORIGINAL_TILES = {
       "A" => 9, "N" => 6,
       "B" => 2, "O" => 8,
       "C" => 2, "P" => 2,
@@ -35,6 +32,11 @@ module Scrabble
       "L" => 4, "Y" => 2,
       "M" => 2, "Z" => 1
     }
+
+  attr_reader :collection
+
+  def initialize
+    @collection = #something that multiples the keys by the values and adds them to this collection array.
   end
 
   def draw_tiles(num)
@@ -42,7 +44,7 @@ module Scrabble
 
   def tiles_remaining
     #this adds the values in the collection, the values are how many there are of each letter tile.
-    tile.collection.values.reduce(:+) 
+    tile.collection.length 
   end
 
   end
