@@ -85,7 +85,7 @@ module Scrabble
 
       #if there's more than one word in that array, pick the shortest word.
       if highest_score_words.length == 1
-        return highest_score_words[0]
+        return highest_score_words.first
       else
         #do something to get the shortest word.
         shortest_word = highest_score_words[0] #start with the first word in the array
