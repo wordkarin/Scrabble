@@ -61,7 +61,7 @@ module Scrabble
       end
 
       it "score method should call strip_punctuation and strip it" do
-        #The score method calls strip_punctuation and returns the word without any punctuation, so that if any punctuation is entered into the word, it scores it without the extra characters. 
+        #The score method calls strip_punctuation and returns the word without any punctuation, so that if any punctuation is entered into the word, it scores it without the extra characters.
         Scoring.score("this!").must_be_same_as(Scoring.score("this"))
       end
     end
@@ -92,7 +92,7 @@ module Scrabble
         # From the requirements: There is a bonus for words that are seven letters. If the top score is tied between multiple words and one used all seven letters, choose the one with seven letters over the one with fewer tiles.
         #NOTE: the shorter word here is not real, but has the same score as the seven letter word (which includes the 50 point bonus).
         seven_vs = %w(QZQZZX aerated)
-        Scoring.highest_score_from(seven_vs).must_equal("AERATED")
+        Scoring.highest_score_from(seven_vs).must_equal("aerated")
       end
 
       it "highest score method returns first word if there's a tie in score/length" do

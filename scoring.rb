@@ -99,7 +99,7 @@ module Scrabble
             return word #exits the loop and returns the word
           elsif word.length < shortest_word.length #compares length of word with first word
             shortest_word = word
-            #if they're equal, don't do anything. 
+            #if they're equal, don't do anything.
           end
         end
           return shortest_word
