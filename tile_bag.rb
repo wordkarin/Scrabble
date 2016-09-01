@@ -2,7 +2,18 @@ require_relative 'scoring.rb'
 module Scrabble
   class TileBag
   attr_reader :tile
-  end 
+  def initialize
+  end
+
+  def draw_tiles(num)
+  end
+
+  def tiles_remaining
+    #tile.collection.values.reduce(:+) #this adds the values in the collection, the values are how many there are of each letter tile.
+
+  end
+
+  end
 end
 #### `TileBag`
 # Create a `Scrabble::TileBag` class with a __minimum of 5 specs__. It should have the following class and instance methods:

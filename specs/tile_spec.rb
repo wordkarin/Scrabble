@@ -10,25 +10,38 @@ module Scrabble
   describe TileBag do
     let(:tile){TileBag.new}
     describe "#initialize" do
-      it "should instantiate collection of tiles" do
-        # strategy: each instance of TileBag sets up new collection of tiles
-        # using attribute reader, @collection = collection, returns array of tiles. self.collection method holds each instance of collection mutating as tiles are drawn.
-        # tile.collection.must_return_array(collection)
+      it "should be an instance of TileBag" do
+        # strategy: each instance of TileBag sets up new collection of tiles in a hash, where the key is the letter, and the value is the number of tiles of that letter.
+        # each of the methods on TileBag is an instance method (called on the new instance of TileBag.
+        tile.must_be_instance_of(TileBag)
+      end
+
+      it "should respond to .collection with a Hash of tiles" do
+        skip
+        # using attribute reader, @collection = collection, returns hash
+        # tile.collection.must_be_kind_of(Hash)
       end
     end
 
     describe "#draw_tiles(num)" do
       it "should return the number of default tiles" do
-        # num: returns the value of the
-        # Strategy: create method with parameter 'num' that returns 'num' default tiles and values by implementing 'tile.sample(num)' since each instance creates its own array draw_tiles method should use mutate that mutates using ruby pop method each time draw_tiles is called. this should return equal number of default tiles and the collection array should then reflect self - num of tiles drawn.
+        skip
+        # Strategy: create method with parameter 'num' that returns 'num' tiles and values by implementing 'tile.sample(num)' since each instance creates its own hash.
+        # draw_tiles method should update the value of the tile.collection hash (subtract one from the value of the tile drawn)
+        # this should return equal number of default tiles and the collection array should then reflect self - num of tiles drawn.
         # tile.draw_tiles(num).must_equal(num)
+      end
+
+      it ".collection should return a different hash as tiles are drawn" do
+        skip
+        # collection method holds each instance of collection mutating as tiles are drawn.
       end
     end
 
     describe "#tiles_remaining" do
-      it "should return an array of the words played by the player" do
-        #plays: returns collection of array at any time with players tiles remaining
-        # tile.collection.must_return_updated(collection)
+      it "should return the number of tiles left in the bag" do
+        skip
+        #returns the number of tiles left in the bag, not an array.
       end
     end
   end
