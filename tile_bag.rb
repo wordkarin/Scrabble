@@ -1,42 +1,59 @@
 require_relative 'scoring.rb'
 module Scrabble
   class TileBag
-    # ##### Initial Distribution of Letters
-    # | Letter : Qty. |
-    # |:------:|:-----:|
-    # | A : 9  | N : 6 |
-    # | B : 2  | O : 8 |
-    # | C : 2  | P : 2 |
-    # | D : 4  | Q : 1 |
-    # | E : 12 | R : 6 |
-    # | F : 2  | S : 4 |
-    # | G : 3  | T : 6 |
-    # | H : 2  | U : 4 |
-    # | I : 9  | V : 2 |
-    # | J : 1  | W : 2 |
-    # | K : 1  | X : 1 |
-    # | L : 4  | Y : 2 |
-    # | M : 2  | Z : 1 |
-    ORIGINAL_TILES = {
-      "A" => 9, "N" => 6,
-      "B" => 2, "O" => 8,
-      "C" => 2, "P" => 2,
-      "D" => 4, "Q" => 1,
-      "E" => 12, "R" => 6,
-      "F" => 2, "S" => 4,
-      "G" => 3, "T" => 6,
-      "H" => 2, "U" => 4,
-      "I" => 9, "V" => 2,
-      "J" => 1, "W" => 2,
-      "K" => 1, "X" => 1,
-      "L" => 4, "Y" => 2,
-      "M" => 2, "Z" => 1
-    }
-
   attr_reader :collection
 
   def initialize
-    @collection = #something that multiples the keys by the values and adds them to this collection array.
+    @collection = []
+    1.times do
+      @collection << "Q"
+      @collection << "J"
+      @collection << "K"
+      @collection << "X"
+      @collection << "Z"
+    end
+
+    2.times do
+      @collection << "M"
+      @collection << "B"
+      @collection << "C"
+      @collection << "F"
+      @collection << "H"
+      @collection << "V"
+      @collection << "W"
+      @collection << "Y"
+      @collection << "P"
+    end
+
+    12.times do
+      @collection << "E"
+    end
+
+    9.times do
+      @collection << "A"
+      @collection << "I"
+    end
+
+    8.times do
+      @collection << "O"
+    end
+
+    6.times do
+      @collection << "N"
+      @collection << "T"
+      @collection << "R"
+    end
+
+    4.times do
+      @collection << "D"
+      @collection << "L"
+      @collection << "S"
+      @collection << "U"
+    end
+
+    3.times do
+      @collection << "G"
+    end
   end
 
   def draw_tiles(num)
@@ -44,7 +61,7 @@ module Scrabble
 
   def tiles_remaining
     #this adds the values in the collection, the values are how many there are of each letter tile.
-    tile.collection.length 
+    tile.collection.length
   end
 
   end

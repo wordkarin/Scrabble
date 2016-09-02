@@ -1,7 +1,6 @@
 require_relative 'spec_helper'
 require_relative '../tile_bag'
 
-# START HERE!!!
 # KNK: I had initially thought that we'd want to start with a hash, where the keys are the letters and the values are the number of that particular tile. However, after chatting with Danielle, I think that the collection instance variable SHOULD actually be an array and that we use the shuffle and pop methods (I think you had that idea too), and that way we don't have to keep track of the number of each letter, we just have an array of the letters.
 # Also, this will give weight to each letter based on how many of that letter we started with.
 # The hash I created can be a constant -- it's a new tile bag's original set.
@@ -18,19 +17,16 @@ module Scrabble
       end
 
       it "should respond to .collection with a array of tiles" do
-        skip
         # using attribute reader, @collection = collection, returns array
         tiles.collection.must_be_kind_of(Array)
       end
 
       it "should include an 'A'" do
-        skip
         #should have another test in here that checks that the hash is populated with letters and has values of the number of tiles of that letter.
         tiles.collection.must_include("A")
       end
 
       it "should start with 98 tiles" do
-        skip
         #upon initialization, there should be a full set of 98 tiles.
         tiles.collection.length.must_equal(98)
       end
