@@ -33,30 +33,30 @@ module Scrabble
     def initialize
     end
 
-    def self.strip_punctuation(string)
-      string_sp = string.gsub(/[^a-z\s]/i,'')
-      string_sp.strip
-      return string_sp
-    end
-
-    def self.check_valid_entry(word)
-      if word.class != String || word.include?(' ')
-        raise ArgumentError.new("Invalid Entry")
-        # exit
-        # end
+    def self.strip_punctuation(word)
+      trouble = ArgumentError.new("Not Accepted :( TRY AGAIN!!!")
+      if !word.is_a? String
+        raise trouble
+      elsif word.split(" ").size != 1
+        raise trouble
       else
-        return word
+      word = word.gsub(/[^a-z\s]/i,'').upcase
+      word = word.split(' ').first
+      word.strip
+      puts word
+      return word
       end
     end
 
     def self.score(word)
       #This method takes in a word and outputs a score based on the sum of its LETTER_SCORE.
       #If the thing that is passed in is not a string, should raise an argument.
-      check_valid_entry(word)
+      #check_valid_entry(word)
       #This method should not be case sensititve. The LETTER_SCORE keys are caps, so we should capitalize the word argument on input.
-      word_cap = word.upcase #included this in 'check_valid_entry'
-      word_sp = strip_punctuation(word_cap)
+      #word_cap = word.upcase #included this in 'check_valid_entry'
+      #word_sp = strip_punctuation(word_cap)
       #Then we split the word into an array of letters:
+      word_sp = strip_punctuation(word)
       word_array = word_sp.split(//)
       word_score = 0
       #Then we start looking up the scores, and adding them to a word_score variable.

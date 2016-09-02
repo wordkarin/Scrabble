@@ -25,7 +25,7 @@ module Scrabble
     def draw_tiles(tile_bag)
     #fills tiles array until array.length = 7
      num_tiles = 7 - @tiles.length
-     @tiles.concat(tile_bag.draw_tiles(num_tiles))   
+     @tiles.concat(tile_bag.draw_tiles(num_tiles))
     end
 
     def won?
@@ -50,7 +50,7 @@ module Scrabble
       #play(word): Adds the input word to the plays Array
       #This method should also update the total score, by calling the "score" method in Scoring for the word played, taking the score that is returned, and adding to the total_score.
       #this checks if the argument passed in is a string and, if so, returns upcase string.
-      Scoring.check_valid_entry(word)
+      Scoring.strip_punctuation(word)
       #this checks if the user has already won and therefore cannot play another word.
       if won?
         return false
