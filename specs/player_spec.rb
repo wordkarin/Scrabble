@@ -98,7 +98,6 @@ module Scrabble
     describe "#highest_word_score" do
       it "should return the score of the highest scoring word" do
 
-      skip
         #populating array
         sebastian.play("cantankerous")
         sebastian.play("onus")

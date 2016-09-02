@@ -33,6 +33,10 @@ module Scrabble
       Scoring.highest_score_from(@plays)
     end
 
+    def highest_word_score
+      Scoring.score(highest_scoring_word)
+    end
+
     def play(word)
       #play(word): Adds the input word to the plays Array
       #This method should also update the total score, by calling the "score" method in Scoring for the word played, taking the score that is returned, and adding to the total_score.
