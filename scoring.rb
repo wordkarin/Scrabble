@@ -33,7 +33,7 @@ module Scrabble
     def initialize
     end
 
-    def self.strip_punctuation(word)
+    def self.validate(word)
       trouble = ArgumentError.new("Not Accepted :( TRY AGAIN!!!")
       if !word.is_a? String
         raise trouble
@@ -43,7 +43,6 @@ module Scrabble
       word = word.gsub(/[^a-z\s]/i,'').upcase
       word = word.split(' ').first
       word.strip
-      puts word
       return word
       end
     end
@@ -56,7 +55,7 @@ module Scrabble
       #word_cap = word.upcase #included this in 'check_valid_entry'
       #word_sp = strip_punctuation(word_cap)
       #Then we split the word into an array of letters:
-      word_sp = strip_punctuation(word)
+      word_sp = validate(word)
       word_array = word_sp.split(//)
       word_score = 0
       #Then we start looking up the scores, and adding them to a word_score variable.
