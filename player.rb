@@ -1,13 +1,16 @@
-require_relative 'scoring.rb' #include all the code in scoring.rb that we need to access here.
+require_relative 'scoring' #include all the code in scoring.rb that we need to access here.
+require_relative 'tile_bag'
 
 module Scrabble
   class Player
-    attr_reader :name, :plays, :total_score
+    attr_reader :name, :plays, :total_score, :tiles
     attr_writer :total_score #this is for testing purposes - I am writing total score in one of the tests, but I don't think that the program should have access to write the total score.
     def initialize(name)
       @name = name
       @plays = []
+      @tiles = []
       @total_score = 0
+
     end
 
     # def check_valid_entry(word)
@@ -19,6 +22,11 @@ module Scrabble
     #       return word.upcase
     #   end
     # end
+    def draw_tiles(tile_bag)
+    #fills tiles array until array.length = 7
+     num_tiles = 7 - @tiles.length
+     @tiles.concat(tile_bag.draw_tiles(num_tiles))   
+    end
 
     def won?
       #won?: If the player has over 100 points, returns true, otherwise returns false
@@ -36,6 +44,7 @@ module Scrabble
     def highest_word_score
       Scoring.score(highest_scoring_word)
     end
+
 
     def play(word)
       #play(word): Adds the input word to the plays Array

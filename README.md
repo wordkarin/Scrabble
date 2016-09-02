@@ -30,7 +30,7 @@ Utilize good pair programming practices. Refer to articles from the [Agile Allia
 
 ### Requirements
 #### Pair Plan
-First, come up with a "plan of action" for how you want to work as a pair. Discuss your learning style, how you prefer to recive feedback, and one team communication skill you want to improve with this experience. Second, review the requirements for Wave 1 and come up with a "plan of action" for your implementation.
+First, come up with a "plan of action" for how you want to work as a pair. Discuss your learning style, how you prefer to receive feedback, and one team communication skill you want to improve with this experience. Second, review the requirements for Wave 1 and come up with a "plan of action" for your implementation.
 
 #### Implementation
 - Create a `Scrabble` module at the project root.

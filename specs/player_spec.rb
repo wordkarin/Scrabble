@@ -1,5 +1,6 @@
 require_relative 'spec_helper' #get all the stuff we need for testing.
-require_relative '../player.rb' #include the code from player.rb that we need to test.
+require_relative '../tile_bag'
+require_relative '../player' #include the code from player.rb that we need to test.
 
 module Scrabble
   describe Player do
@@ -108,5 +109,22 @@ module Scrabble
         #Strategy: This method should directly call the score method from the Scoring class, by passing in the  result of the highest_scoring_word from the Player class.
       end
     end
+
+    describe "#tiles" do
+      #instance variable where .tiles returns array of tiles for player
+      it "must return array" do
+        sebastian.tiles.must_be_instance_of(Array)
+      end
+    end
+
+    describe "#draw_tiles(tile_bag)" do
+      it "must push tiles into tiles array until array.length = 7" do
+        meow_bag = TileBag.new
+        sebastian.draw_tiles(meow_bag)
+        sebastian.tiles.length.must_equal(7)
+      end
+
+    end
+
   end
 end
