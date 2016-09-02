@@ -54,14 +54,18 @@ module Scrabble
     3.times do
       @collection << "G"
     end
+
+    @collection.shuffle! #we're shuffling the tiles in initialize so that we don't have to shuffle it each time we draw a tile.
   end
 
   def draw_tiles(num)
+    tiles_drawn = @collection.pop(num) #remove one tile off the end
+    return tiles_drawn
   end
 
   def tiles_remaining
     #this adds the values in the collection, the values are how many there are of each letter tile.
-    tile.collection.length
+    @collection.length
   end
 
   end

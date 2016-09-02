@@ -34,23 +34,22 @@ module Scrabble
 
     describe "#draw_tiles(num)" do
       it "should return the number of default tiles" do
-        skip
         # Strategy: create method with parameter 'num' that returns 'num' tiles and values by implementing 'tile.sample(num)' since each instance creates its own hash.
         # draw_tiles method should update the value of the tile.collection hash (subtract one from the value of the tile drawn)
         # this should return equal number of default tiles and the collection array should then reflect self - num of tiles drawn.
-        # tile.draw_tiles(num).must_equal(num)
+        tiles.draw_tiles(7).must_be_kind_of(Array)
       end
 
-      it ".collection should return a different hash as tiles are drawn" do
-        skip
-        # collection method holds each instance of collection mutating as tiles are drawn.
+      it "should return the same number of tiles that you asked for" do
+        #check that the array returned from this method is the correct length.
+        tiles_drawn = tiles.draw_tiles(7)
+        tiles_drawn.length.must_equal(7)
       end
     end
 
     describe "#tiles_remaining" do
       it "should return the number of tiles left in the bag" do
         #returns the number of tiles left in the bag, not an array.
-        skip
         tiles.draw_tiles(5) #start with 98 tiles, remove 5 with draw_tiles method.
         tiles.tiles_remaining.must_equal(93) #should now have 93 left.
       end
