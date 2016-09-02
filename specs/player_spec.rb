@@ -84,16 +84,28 @@ module Scrabble
 
     describe "#highest_scoring_word" do
       it "should return the highest scoring word the player has played" do
-        skip
-        # #highest_scoring_word: Returns the highest scoring played word
+        #populating plays array
+      sebastian.play("cantankerous")
+      sebastian.play("onus")
+      sebastian.play("zeal")
+      sebastian.play("spry")
+      #highest_scoring_word: Returns the highest scoring played word
+      sebastian.highest_scoring_word.must_equal("cantankerous")
         #Strategy: This method should directly call highest_score_from the Scoring class, by passing in the @plays  array.
       end
     end
 
     describe "#highest_word_score" do
       it "should return the score of the highest scoring word" do
-        skip
+
+      skip
+        #populating array
+        sebastian.play("cantankerous")
+        sebastian.play("onus")
+        sebastian.play("zeal")
+        sebastian.play("spry")
         # #highest_word_score: Returns the highest_scoring_word score
+        sebastian.highest_word_score.must_equal(18)
         #Strategy: This method should directly call the score method from the Scoring class, by passing in the  result of the highest_scoring_word from the Player class.
       end
     end
